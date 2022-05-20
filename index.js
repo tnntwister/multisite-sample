@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const dotenvFlow = require("dotenv-flow");
 const bodyParser = require("body-parser");
+const axios = require("axios").default;
 
 dotenvFlow.config();
 
@@ -14,17 +15,31 @@ app.use(express.static("./views"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", function (req, res) {
-  var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
-  let content = {};
+app.get("/", async function (req, res) {
+  // var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
+  var entreprise = "";
+  var content = {};
+  content.title = "multisite essai";
   if (req.get("host").includes("hostlockers")) {
-    content.title = "HostLockers";
+    entreprise = "HostLockers";
   } else if (req.get("host").includes("pharmalockers")) {
-    content.title = "PharmaLockers";
+    entreprise = "PharmaLockers";
   } else {
-    content.title = "SmartLockers";
+    entreprise = "SmartLockers";
   }
 
+  const result = await axios.get(
+    "https://api.dev.smartlockers.io/api/v2.0/translation/static/fr"
+  );
+
+  content.texts = result.data;
+
+  const entrepriseResult = await axios.get(
+    "https://api.dev.smartlockers.io/api/v2.0/entreprise/byName/SmartLOCKERS"
+  );
+
+  content.entreprise = entrepriseResult.data.data;
+  console.log(content.entreprise);
   res.render("index", content);
 });
 

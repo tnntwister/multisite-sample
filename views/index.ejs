@@ -8,8 +8,11 @@
 
     <main>
       <div class="jumbotron">
-        <h1><%= title %> is great</h1>
-        <p>Welcome to templating using EJS</p>
+        <h1>
+          <%= title %><% if(title != 'SmartLockers'){ %> - une filiale
+          Smartlockers<% } %>
+        </h1>
+        <div id="cgv"><%= entreprise.cgdv %></div>
       </div>
     </main>
 
