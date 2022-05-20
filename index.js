@@ -22,10 +22,13 @@ app.get("/", async function (req, res) {
   content.title = "multisite essai";
   if (req.get("host").includes("hostlockers")) {
     entreprise = "HostLockers";
+    content.title = entreprise;
   } else if (req.get("host").includes("pharmalockers")) {
     entreprise = "PharmaLockers";
+    content.title = entreprise;
   } else {
     entreprise = "SmartLockers";
+    content.title = "multisite essai";
   }
 
   const result = await axios.get(
@@ -39,7 +42,6 @@ app.get("/", async function (req, res) {
   );
 
   content.entreprise = entrepriseResult.data.data;
-  // console.log(content.entreprise);
   res.render("index", content);
 });
 
