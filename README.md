@@ -1,21 +1,11 @@
-# stripe-node-sample
+# multisite-sample
 
-## how to use 
+changes content depending on company
 
-1. replace stripe key placeholders with good ones
-
-hint : search 'stripe(' in javascript 
-
-2. install npm dependancies 
+## how to use
 
 ```
-npm install
-```
-
-3. launch project 
-
-```
-nodemon index.js
+npm run dev
 ```
 
 4. open your bro(wser)

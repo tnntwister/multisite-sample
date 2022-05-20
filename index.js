@@ -39,7 +39,7 @@ app.get("/", async function (req, res) {
   );
 
   content.entreprise = entrepriseResult.data.data;
-  console.log(content.entreprise);
+  // console.log(content.entreprise);
   res.render("index", content);
 });
 
