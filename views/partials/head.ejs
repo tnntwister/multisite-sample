@@ -13,5 +13,36 @@
   body {
     padding-top: 50px;
   }
+  :root {
+    --color1: <%= entreprise.color_1 %>;
+    --color2: <%= entreprise.color_2 %>;
+    --color3: <%= entreprise.color_3 %>;
+    --color4: <%= entreprise.color_4 %>;
+  }
+
+  .color1 {
+    color: var(--color1);
+  }
+  .color1bg {
+    background-color: var(--color1);
+  }
+  .color2 {
+    color: var(--color2);
+  }
+  .color2bg {
+    background-color: var(--color2);
+  }
+  .color3 {
+    color: var(--color3);
+  }
+  .color3bg {
+    background-color: var(--color3);
+  }
+  .color4 {
+    color: var(--color4);
+  }
+  .color4bg {
+    background-color: var(--color4);
+  }
 </style>
 <script type="module" src="./content.js"></script>
